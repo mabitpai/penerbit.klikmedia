@@ -29,14 +29,15 @@ a{color:inherit}
 
 /* Nav */
 .nav{background:var(--deep);color:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(200,150,46,.35)}
-.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;height:64px}
-.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:1.2rem;text-decoration:none}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:1.2rem;text-decoration:none;min-width:0}
 .brand svg{width:34px;height:34px;flex:none}
-.brand small{display:block;font-family:var(--sans);font-weight:500;font-size:.7rem;color:var(--gold-l);letter-spacing:.3px;margin-top:-3px}
-.nav .links{display:flex;align-items:center;gap:22px;font-size:.92rem;font-weight:600}
+.brand > span{min-width:0}
+.brand small{display:block;font-family:var(--sans);font-weight:500;font-size:.7rem;color:var(--gold-l);letter-spacing:.3px;margin-top:2px;line-height:1.35}
+.nav .links{display:flex;align-items:center;gap:22px;font-size:.92rem;font-weight:600;flex-shrink:0}
 .nav .links a{text-decoration:none;color:#d6def5}
 .nav .links a:hover{color:#fff}
-.nav .links a.wa{background:var(--gold);color:var(--deep);padding:9px 18px;border-radius:999px;font-weight:800}
+.nav .links a.wa{background:var(--gold);color:var(--deep);padding:9px 18px;border-radius:999px;font-weight:800;white-space:nowrap}
 
 /* Hero */
 .hero{background:radial-gradient(900px 500px at 85% 20%,#1d3f8a 0%,transparent 60%),linear-gradient(160deg,var(--deep),var(--navy));color:#fff;padding:76px 0 96px;overflow:hidden}
@@ -76,6 +77,7 @@ a{color:inherit}
 .head h2{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15}
 .head p{margin-top:12px;color:var(--muted)}
 .head::after{content:"";display:block;width:64px;height:3px;background:var(--gold);margin:22px auto 0}
+.berlaku{display:inline-block;background:rgba(200,150,46,.14);color:var(--navy);border:1px solid var(--gold);font-size:.82rem;font-weight:700;padding:5px 16px;border-radius:999px;margin-bottom:12px}
 
 /* Packages */
 #paket{padding:76px 0 30px}
@@ -130,6 +132,12 @@ a{color:inherit}
 .addon .ic{width:46px;height:46px;border-radius:12px;background:#eef2fb;display:grid;place-items:center;font-size:1.5rem}
 .addon small{font-weight:600;color:var(--gold);font-size:.78rem}
 
+/* Kerjasama & Cetak Besar */
+.partner{margin-top:46px;background:linear-gradient(160deg,var(--navy),var(--deep));border:1px solid var(--gold);border-radius:18px;padding:32px 30px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:24px;box-shadow:0 14px 34px rgba(15,37,87,.12)}
+.partner h3{font-family:var(--serif);font-size:1.45rem;color:var(--gold-l);margin-bottom:6px;line-height:1.25}
+.partner p{color:#d6def5;font-size:.95rem;max-width:62ch}
+.partner .btn{flex-shrink:0;white-space:nowrap}
+
 /* Notes */
 .notes{margin-top:50px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:12px;padding:22px 28px}
 .notes h3{font-family:var(--serif);color:var(--navy);font-size:1.25rem;margin-bottom:8px}
@@ -166,9 +174,18 @@ footer a:hover{color:var(--gold-l)}
   .trust div{justify-content:flex-start}
   .steps{grid-template-columns:repeat(2,1fr);row-gap:34px}
   .steps li::after{display:none}
+  .partner{flex-direction:column;text-align:center;padding:26px 22px}
+  .partner .btn{width:100%;text-align:center}
   footer .wrap{grid-template-columns:1fr}
 }
 @media (max-width:580px){
+  .wrap{padding:0 16px}
+  .brand{gap:9px;font-size:1.05rem}
+  .brand svg{width:28px;height:28px}
+  .brand small{font-size:.63rem;letter-spacing:.1px}
+  .brand small .sep{display:none}
+  .brand small .ikapi{display:block;color:#cdd8f3;font-weight:400;margin-top:1px}
+  .nav .links a.wa{padding:7px 12px;font-size:.78rem}
   .grid{grid-template-columns:1fr}
   .addons{grid-template-columns:repeat(2,1fr)}
   .card .desc{min-height:0}
@@ -183,7 +200,7 @@ footer a:hover{color:var(--gold-l)}
   <div class="wrap">
     <a class="brand" href="#">
       <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 10c7-2 14-1 20 3v26C18 35 11 34 4 36z" fill="#fff"/><path d="M44 10c-7-2-14-1-20 3v26c6-4 13-5 20-3z" fill="#c8962e"/></svg>
-      <span>Klik Media<small>Penerbit dan Percetakan | Anggota IKAPI No. 275/JTI/2021</small></span>
+      <span>Klik Media<small>Penerbit dan Percetakan <span class="sep">| </span><span class="ikapi">Anggota IKAPI No. 275/JTI/2021</span></small></span>
     </a>
     <nav class="links">
       <a href="#paket">Paket</a>
@@ -227,6 +244,7 @@ footer a:hover{color:var(--gold-l)}
 
 <main class="wrap" id="paket">
   <div class="head">
+    <span class="berlaku">Berlaku Mulai 20 Oktober 2026</span>
     <h2>Pilih paket penerbitan Anda</h2>
     <p>Empat paket dengan harga jelas. Semua paket sudah termasuk ISBN/QRCBN dan cetak 2 eksemplar.</p>
   </div>
@@ -312,6 +330,14 @@ footer a:hover{color:var(--gold-l)}
       <a class="addon" href="https://wa.me/6281336335612" data-layanan="Cetak Tambahan"><span class="ic">🖨️</span>Cetak Tambahan<small>Tanya via WA</small></a>
       <a class="addon" href="https://wa.me/6281336335612" data-layanan="Publish Google Play Books"><span class="ic">▶️</span>Publish Google Play Books<small>Tanya via WA</small></a>
       <a class="addon" href="https://wa.me/6281336335612" data-layanan="Pendampingan Publikasi"><span class="ic">🎓</span>Pendampingan Publikasi<small>Tanya via WA</small></a>
+    </div>
+
+    <div class="partner">
+      <div>
+        <h3>Kerjasama Penerbitan &amp; Percetakan Jumlah Besar</h3>
+        <p>Ingin mengajukan kerjasama penerbitan untuk sekolah, kampus, instansi, atau cetak buku dalam jumlah besar? Dapatkan penawaran khusus dengan menghubungi kami langsung.</p>
+      </div>
+      <a class="btn gold" href="https://wa.me/6281336335612" data-pesan="Halo Klik Media, saya ingin mengajukan kerjasama penerbitan / percetakan dalam jumlah besar. Mohon informasi lebih lanjut.">Ajukan via WhatsApp</a>
     </div>
   </section>
 
